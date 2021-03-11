@@ -1,0 +1,2 @@
+class Everycheck < ApplicationRecord
+end

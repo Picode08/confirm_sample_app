@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Foodname:</strong>
+  <%= @everycheck.foodname %>
+</p>
+
+<p>
+  <strong>Calorie:</strong>
+  <%= @everycheck.calorie %>
+</p>
+
+<p>
+  <strong>Eat date:</strong>
+  <%= @everycheck.eat_date %>
+</p>
+
+<p>
+  <strong>Eat time:</strong>
+  <%= @everycheck.eat_time %>
+</p>
+
+<%= link_to 'Edit', edit_everycheck_path(@everycheck) %> |
+<%= link_to 'Back', everychecks_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Everychecks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Foodname</th>
+      <th>Calorie</th>
+      <th>Eat date</th>
+      <th>Eat time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @everychecks.each do |everycheck| %>
+      <tr>
+        <td><%= everycheck.foodname %></td>
+        <td><%= everycheck.calorie %></td>
+        <td><%= everycheck.eat_date %></td>
+        <td><%= everycheck.eat_time %></td>
+        <td><%= link_to 'Show', everycheck %></td>
+        <td><%= link_to 'Edit', edit_everycheck_path(everycheck) %></td>
+        <td><%= link_to 'Destroy', everycheck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Everycheck', new_everycheck_path %>
