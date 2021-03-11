@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1>食べたもの登録前確認</h1>
+      <%= form_with model:@user, url:everychecks_path, locale: true do |f| %>
+      <table class="table">
+        <thead>
+          <th>食べ物</th>
+          <th>カロリー</th>
+          <th>食べた日</th>
+        </thead>
+        <tbody>
+          <% @eattings.each do |eat| %>
+            <%= f.fields_for "everychecks[]", eat do |af| %>
+            <tr>
+              <td><%= eat.foodname %></td>
+              <td><%= eat.calorie %></td>
+              <td><%= eat.eat_date %></td>
+              <%= af.hidden_field :foodname, value:eat.foodname %>
+              <%= af.hidden_field :calorie, value:eat.calorie %>
+              <%= af.hidden_field :eat_date, value:eat.eat_date %>
+            </tr>
+          <% end %>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th class="bg-light">合計カロリー</th>
+            <td colspan="2"><%= @totalCal  %></td>
+          </tr>
+        </tfoot>
+      </table>
+      <%= f.submit '登録', class:"btn btn-primary btn-block" %>
+      <% end %>
+    </div>
+  </div>
+</div>

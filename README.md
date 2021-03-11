@@ -1,24 +1,18 @@
-# README
+## サンプル手順書
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#　まずはrootでconfirmにとぶようにしています。ここでサンプルハッシュで表示させていますがこれはデータベースにまだとうろくされてません
 
-Things you may want to cover:
+#　localhost:3000/everychecksで一覧をページをみてください。まだレコードがないのが確認できます。念の為rails cでEverycheck.countでレコード数を確認してください。0になるはずです
 
-* Ruby version
+## ↓
 
-* System dependencies
 
-* Configuration
+#　confirmページの登録ボタン押してください。その後localhost:3000/everychecksページとrails cでレコード数確認くださいレコード数がふえているのが確認できるはずです。
 
-* Database creation
 
-* Database initialization
+## つかったものeverycheckのcontrollerのconfirmとcreateアクション とuserとeverycheckのモデル、confirm.html.erbです。
+# カロリーの計算はチーム開発の請求金額でも応用できるはずです
 
-* How to run the test suite
+#　がんばってください
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
-
-* ...

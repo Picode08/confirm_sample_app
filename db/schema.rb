@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_084825) do
+ActiveRecord::Schema.define(version: 2021_03_11_095625) do
 
   create_table "everychecks", force: :cascade do |t|
     t.string "foodname"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2021_03_11_084825) do
     t.datetime "eat_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_everychecks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

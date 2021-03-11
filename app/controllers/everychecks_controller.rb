@@ -1,6 +1,35 @@
 class EverychecksController < ApplicationController
   before_action :set_everycheck, only: %i[ show edit update destroy ]
 
+  def confirm
+    #今回はユーザーid 1の人がログインしたと想定します。
+
+    current_user = User.first
+     #これが買い物かごページの確定ボタンが押された際くるパラメーターです杉浦さんの実装によってはかわるのであくまでサンプルです。　
+    buy_cart_page_parameter_sample =[
+      {
+        foodname: "ビックマック",
+        calorie: 200,
+        eat_date: Date.today,
+      },
+      {
+        foodname: "カツ丼",
+        calorie: 600,
+        eat_date: Date.today,
+      }
+     ]
+     #ログインユーザーの食べたものインスタンスリストを作成メソッドはuserモデル参照
+     @eattings = current_user.user_eattings(buy_cart_page_parameter_sample)  #=>ここに買い物かごから来たパラメーターを格納してインスタンス作成
+
+     #トータルのカロリーを計算したものです作成メソッドはeverychecksモデル参照
+     @totalCal = Everycheck.total_cal(@eattings)     #=>上の作成インスタンスリストを代入します。
+  end
+  
+
+
+
+
+
   # GET /everychecks or /everychecks.json
   def index
     @everychecks = Everycheck.all
@@ -21,17 +50,15 @@ class EverychecksController < ApplicationController
 
   # POST /everychecks or /everychecks.json
   def create
-    @everycheck = Everycheck.new(everycheck_params)
-
-    respond_to do |format|
-      if @everycheck.save
-        format.html { redirect_to @everycheck, notice: "Everycheck was successfully created." }
-        format.json { render :show, status: :created, location: @everycheck }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @everycheck.errors, status: :unprocessable_entity }
-      end
+    user = User.first
+    params[:everychecks].each do |param|
+       user.everychecks.create(
+         foodname: param[:foodname],
+         calorie: params[:calorie],
+         eat_date: params[:eat_date]
+       )
     end
+    redirect_to everychecks_url,notice: '登録完了'
   end
 
   # PATCH/PUT /everychecks/1 or /everychecks/1.json

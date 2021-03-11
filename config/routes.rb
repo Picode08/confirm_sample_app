@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :everychecks
+  resources :everychecks do
+    get :confirm, on: :collection   #=>本来getはまずいですが買い物かごできるまでgetにします。
+  end
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'everychecks#confirm'
 end
