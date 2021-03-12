@@ -1,7 +1,7 @@
 class Everycheck < ApplicationRecord
     belongs_to :user
     
-    #ごうけいのカロリーをけいさんするメソッドです。##
+    #ごうけいのカロリーをけいさんするメソッドです。###
     def self.total_cal(eattings)
       totalcal = 0
       eattings.each do |eat|
