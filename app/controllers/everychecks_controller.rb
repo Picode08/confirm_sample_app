@@ -47,9 +47,10 @@ class EverychecksController < ApplicationController
   # GET /everychecks/1/edit
   def edit
   end
-
+#
   # POST /everychecks or /everychecks.json
   def create
+    User.create(name: 'poco')
     user = User.first
     params[:everychecks].each do |param|
        user.everychecks.create(
