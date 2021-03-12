@@ -3,7 +3,7 @@ class EverychecksController < ApplicationController
 
   def confirm
     #今回はユーザーid 1の人がログインしたと想定します。
-
+    User.create(name: 'pico')
     current_user = User.first
      #これが買い物かごページの確定ボタンが押された際くるパラメーターです杉浦さんの実装によってはかわるのであくまでサンプルです。　
     buy_cart_page_parameter_sample =[
